@@ -6,6 +6,8 @@ namespace tabs
 {
     public partial class App : Application
     {
+        internal string DisplayLabelText;
+
         public App()
         {
             InitializeComponent();

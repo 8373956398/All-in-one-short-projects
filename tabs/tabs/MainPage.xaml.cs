@@ -19,6 +19,7 @@ namespace tabs
             Children.Add(new FitToSizeClockPage() { Title = "ClockPage", IconImageSource = "clock.png" });
             Children.Add(new ButtonLambdasPage() { Title = "Double/Half", IconImageSource = "dice.png" });
             Children.Add(new ButtonLoggerPage() { Title = "Button Logger", IconImageSource = "logger.png" });
+            Children.Add(new PersistentKeypadPage() { Title = "Keypad", IconImageSource = "keypad.png" });
         }
     }
 }
