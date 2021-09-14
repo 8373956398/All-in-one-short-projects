@@ -18,14 +18,14 @@ namespace tabs
         public PersistentKeypadPage()
         {
 
-            // Create a vertical stack for the entire keypad.
+  
             StackLayout mainStack = new StackLayout
             {
-                VerticalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand,
                 HorizontalOptions = LayoutOptions.Center
             };
 
-            // First row is the Label.
+  
             displayLabel = new Label
             {
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
@@ -34,7 +34,7 @@ namespace tabs
             };
             mainStack.Children.Add(displayLabel);
 
-            // Second row is the backspace Button.
+  
             backspaceButton = new Button
             {
                 Text = "\u21E6",
@@ -44,7 +44,6 @@ namespace tabs
             backspaceButton.Clicked += OnBackspaceButtonClicked;
             mainStack.Children.Add(backspaceButton);
 
-            // Now do the 10 number keys.
             StackLayout rowStack = null;
 
             for (int num = 1; num <= 10; num++)
@@ -66,7 +65,7 @@ namespace tabs
                 };
                 digitButton.Clicked += OnDigitButtonClicked;
 
-                // For the zero button, expand to fill horizontally.
+                
                 if (num == 10)
                 {
                     digitButton.HorizontalOptions = LayoutOptions.FillAndExpand;
@@ -76,7 +75,6 @@ namespace tabs
 
             this.Content = mainStack;
 
-            // New code for loading previous keypad text.
             App app = Application.Current as App;
             displayLabel.Text = app.DisplayLabelText;
             backspaceButton.IsEnabled = displayLabel.Text != null &&
@@ -90,7 +88,6 @@ namespace tabs
             displayLabel.Text += (string)button.StyleId;
             backspaceButton.IsEnabled = true;
 
-            // Save keypad text.
             App app = Application.Current as App;
             app.DisplayLabelText = displayLabel.Text;
         }
@@ -101,7 +98,6 @@ namespace tabs
             displayLabel.Text = text.Substring(0, text.Length - 1);
             backspaceButton.IsEnabled = displayLabel.Text.Length > 0;
 
-            // Save keypad text.
             App app = Application.Current as App;
             app.DisplayLabelText = displayLabel.Text;
 
